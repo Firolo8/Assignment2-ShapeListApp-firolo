@@ -1,7 +1,8 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class ShapeManager extends JFrame {
+
     private JPanel listContainer; // This will hold our rows
     private JScrollPane scrollPane;
 
@@ -14,7 +15,6 @@ public class ShapeManager extends JFrame {
         // Setup the list container (Vertical Layout)
         listContainer = new JPanel();
         listContainer.setLayout(new BoxLayout(listContainer, BoxLayout.Y_AXIS));
-
         scrollPane = new JScrollPane(listContainer);
         add(scrollPane, BorderLayout.CENTER);
 
@@ -27,6 +27,7 @@ public class ShapeManager extends JFrame {
             btn.addActionListener(e -> promptForShape(type));
             controls.add(btn);
         }
+
         add(controls, BorderLayout.SOUTH);
     }
 
@@ -36,15 +37,15 @@ public class ShapeManager extends JFrame {
         row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
         row.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY));
 
-        // JLabel label = new JLabel(" " + shape.getClassName());
-        JLabel label = new JLabel("  " + shape);
+        // Use the shape's toString() for the label
+        JLabel label = new JLabel(" " + shape.toString());
         JButton showAreaBtn = new JButton("Show Area");
 
         // The button action: Open a new small window (Dialog)
         showAreaBtn.addActionListener(e -> {
             JOptionPane.showMessageDialog(this,
                     "The area of this " + shape.getClassName() + " is: "
-                            + String.format("%.2f", shape.getArea()),
+                    + String.format("%.2f", shape.getArea()),
                     "Shape Area", JOptionPane.INFORMATION_MESSAGE);
         });
 
@@ -74,7 +75,8 @@ public class ShapeManager extends JFrame {
                 addShapeToList(new Triangle(b, h));
             }
         } catch (Exception ex) {
-            /* Handle cancel or invalid input */ }
+            /* Handle cancel or invalid input */
+        }
     }
 
     public static void main(String[] args) {
