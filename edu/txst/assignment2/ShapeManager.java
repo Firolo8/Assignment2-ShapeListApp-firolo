@@ -1,3 +1,4 @@
+package edu.txst.assignment2;
 import java.awt.*;
 import javax.swing.*;
 
